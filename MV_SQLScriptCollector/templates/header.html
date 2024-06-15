@@ -1,0 +1,99 @@
+{% block header %}
+    <nav class="navbar navbar-expand-sm bg-body-tertiary" aria-label="Third navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://www.mvideo.ru/">
+                <img loading="lazy" alt="https://www.mvideo.ru/" width="117" height="48"
+                     src="https://cms.mvideo.ru/magnoliaPublic/dam/jcr:a036485b-d677-429c-9886-1ab6b62e31fd">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                    aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link greeting" aria-current="page" href="{{ url_for('core.home') }}">Главная</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle greeting" href="{{ url_for('folders.folders_list') }}"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Отделы
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item greeting" href="{{ url_for('folders.add_folder') }}">
+                                    Добавить новую папку отдела
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item greeting" href="{{ url_for('folders.folders_list') }}">
+                                    Список отделов
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle greeting" href="{{ url_for('scripts.scripts_list') }}"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            SQL скрипты
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item greeting" href="{{ url_for('scripts.add_script') }}">
+                                    Добавить SQL скрипт вручную
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item greeting" href="#">Загрузить SQL скрипт из папки</a></li>
+                            <li>
+                                <a class="dropdown-item greeting" href="{{ url_for('scripts.scripts_list') }}">
+                                    Список SQL скриптов
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle greeting" href="{{ url_for('users.users_list') }}"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Пользователи
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item greeting" href="{{ url_for('users.register') }}">
+                                    Регистрация нового пользователя
+                                </a>
+                            </li>
+                            {% if not current_user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item greeting" href="{{ url_for('users.login') }}">
+                                        Авторизация
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if current_user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item greeting" href="{{ url_for('users.users_list') }}">
+                                        Список пользователей (адм.)
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item greeting" href="#">Мои скрипты</a></li>
+                                <li>
+                                    <a class="dropdown-item greeting" href="{{ url_for('users.logout') }}">Выйти</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+                <form role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
+                <ul class="navbar-nav mb-2 mb-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('users.get_user') }}">
+                            <i class="fa-regular fa-circle-user fa-lg"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}

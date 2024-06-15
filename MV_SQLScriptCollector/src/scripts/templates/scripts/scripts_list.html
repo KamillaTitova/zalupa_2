@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main class="w-100">
+        <div class="container pt-3">
+            <h1 class="h3 mb-3 fw-normal text-center">Список SQL скриптов</h1>
+            <table class="table table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Script name</th>
+                        <th scope="col">Script description</th>
+                        <th scope="col">UserID</th>
+                        <th scope="col">Code</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for script in scripts %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>
+                                <a href="{{ url_for('scripts.get_script', slug=script.id) }}">{{ script.name }}</a>
+                            </td>
+                            <td>
+                                {{ script.description }}
+                            </td>
+                            <td>
+                                {{ script.user_id }}
+                            </td>
+                            <td>
+                                {% if script.code|length > 32 %}
+                                    {{ script.code[:32] }}...
+                                {% else %}
+                                    {{ script.code }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

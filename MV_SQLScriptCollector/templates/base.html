@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-100">
+<head>
+    {% block title %}
+        {% if title %}
+            <title>{{title}}</title>
+        {% else %}
+            <title>МВ проект \'Scripts DataBase\' - Камилла Титова (@kamilla_ti)</title>
+        {% endif %}
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block meta %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon"
+          href="https://assets-cdn.mvideo.ru/ef6f56ef720e358a53c59743c3d15bd80a93896f/favicon.ico">
+    <link rel="preload stylesheet" type="text/css" crossorigin="anonymous" as="style"
+          href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="preload stylesheet" type="text/css" as="style"
+          href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block css %}{% endblock %}
+</head>
+<body class="d-flex flex-column h-100" style="background-color: #e2e8f0">
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+<!-- messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="row pt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    {% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+<!-- Bootstrap core JS-->
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<!-- FontAwesome core JS-->
+<script src="https://kit.fontawesome.com/1291b4253a.js" crossorigin="anonymous"></script>
+</body>
+</html>

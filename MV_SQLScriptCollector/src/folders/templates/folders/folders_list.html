@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main class="w-100">
+        <div class="container pt-3">
+            <h1 class="h3 mb-3 fw-normal text-center">Список отделов</h1>
+            <table class="table table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Department name</th>
+                        <th scope="col">Private</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for folder in folders %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>
+                                {{ folder.folder_name }}
+                            </td>
+                            <td>
+                                {{ folder.private }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

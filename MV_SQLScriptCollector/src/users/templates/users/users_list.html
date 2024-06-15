@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main class="w-100">
+        <div class="container pt-3">
+            <h1 class="h3 mb-3 fw-normal text-center">Список пользователей системы</h1>
+            <table class="table table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">User name</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">MVideo UserID</th>
+                        <th scope="col">Is admin</th>
+                        <th scope="col">Scripts q-ty</th>
+                        <th scope="col">Last login on</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>
+                                {{ user.folder.folder_name }}
+                            </td>
+                            <td>
+                                {{ user.name }}
+                            </td>
+                            <td>
+                                {{ user.email }}
+                            </td>
+                            <td>
+                                {{ user.mv_user_id }}
+                            </td>
+                            <td>
+                                {{ user.is_admin }}
+                            </td>
+                            <td>
+                                *** Unknown ***
+                            </td>
+                            <td>
+                                {{ user.last_login_on.strftime('%Y-%m-%d %H:%M:%S') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

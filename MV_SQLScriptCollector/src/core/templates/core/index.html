@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block css %}
+    <link rel="preload stylesheet" type="text/css" crossorigin="anonymous" as="style"
+          href="{{ url_for('core.static', filename='css/sidebars.css') }}">
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-nowrap">
+    <div class="sidebar" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none data-office">
+            <span class="fs-5 fw-semibold" style="color: white">Data Office</span>
+        </a>
+        <div class="input-zone">
+            <input type="text" class="sidebar-input" id="searchInput" placeholder="Поиск...">
+        </div>
+        {% for folder in folders %}
+            <ul class="list-unstyled ps-0">
+                <li class="m-0">
+                    <button class="btn btn-toggle d-inline-flex align-items-center collapsed" data-bs-toggle="collapse" data-bs-target="#folder_{{ folder.id }}" aria-expanded="false">
+                        {{ folder.folder_name }}
+                    </button>
+                    <div class="collapse" id="folder_{{ folder.id }}">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                            {% for user in folder.users %}
+                                <li class="m-0">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center collapsed user-button"
+                                            data-bs-toggle="collapse" data-bs-target="#user_{{ user.id }}" aria-expanded="false">
+                                        {{ user.name }}
+                                    </button>
+                                    <div class="collapse" id="user_{{ user.id }}">
+                                        <ul class="btn-toggle-nav fw-normal scripts">
+                                            {% for script in user.scripts %}
+                                                <li class="script-name">
+                                                    <span class="link-body-emphasis d-inline-flex text-decoration-none rounded script-link"
+                                                          data-script-name="{{ script.name }}"
+                                                          data-script-text="{{ script.code }}"
+                                                          data-script-author="{{ user.name }}"
+                                                          data-script-created="{{ script.created_at }}"
+                                                          data-script-modified="{{ script.updated_at }}"
+                                                          data-script-description="{{ script.description }}">
+                                                        {{ script.name }}
+                                                    </span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
+    <div class="main-page">
+        <div class="script-area">
+            <div class="script-title">
+                <div class="script-name"> -/-</div>
+                <div class="script-buttons">
+                    <button id="copy-button" class="script-button">copy</button>
+                    <button id="edit-button" class="script-button">edit</button>
+                </div>
+            </div>
+            <div class="script-text"> -/-</div>
+        </div>
+        <div class="script-info">
+            <div class="main-info">
+                <div class="info-title">Основные</div>
+                <ul id="main-info-list" class="info-list">
+                    <li id="author-info" class="info-item">Автор: -/-</li>
+                    <li id="created-info" class="info-item">Дата создания: -/-</li>
+                    <li id="modified-info" class="info-item">Дата последнего изменения: -/-</li>
+                    <li id="name-info" class="info-item">Название: -/-</li>
+                    <li id="description-info" class="info-item">Описание: -/-</li>
+                </ul>
+                </div>
+            <div class="plus-info">
+                <div class="info-title">Надстройки</div>
+                <ul id="superstructure-info" class="info-list">
+                    <li class="info-item">Среднее время запуска (с/м):  -/-</li>
+                    <li class="info-item">Количество памяти:  -/-</li>
+                </ul>
+                <div class="info-title">Использованные объекты</div>
+                <ul id="used-objects-info" class="info-list used-objects"> -/-</ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('core.static', filename='js/index.js') }}"></script>
+{% endblock %}

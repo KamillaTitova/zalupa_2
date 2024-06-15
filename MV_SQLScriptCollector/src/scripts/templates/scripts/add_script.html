@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="row pt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <main class="w-100 m-auto">
+                    <form role="form" method="post" action="">
+                        {{ form.csrf_token }}
+                        <h1 class="h3 mb-3 fw-normal text-center">Добавление нового SQL скрипта</h1>
+                        <div class="form-floating">
+                            {{ form.name(placeholder="name", class="form-control mb-2") }}
+                            {{ form.name.label }}
+                            {% if form.name.errors %}
+                                {% for error in form.name.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="form-floating">
+                            {{ form.description(placeholder="description", class="form-control mb-2") }}
+                            {{ form.description.label }}
+                            {% if form.description.errors %}
+                                {% for error in form.description.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="form-floating">
+                            {{ form.user_id(placeholder="Автор SQL скрипта", class="form-control mb-2") }}
+                            {{ form.user_id.label }}
+                            {% if form.user_id.errors %}
+                                {% for error in form.user_id.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="form-floating">
+                            {{ form.code(placeholder="SQL script code", class="form-control mb-2",
+                            style="height: 400px") }}
+                            {{ form.code.label }}
+                            {% if form.code.errors %}
+                                {% for error in form.code.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Добавить скрипт</button>
+{#                        <p class="text-center mt-3">Уже зарегистрировались?#}
+{#                            <a href="{{ url_for('users.login') }}">Войдите в систему</a>#}
+{#                        </p>#}
+                    </form>
+                </main>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+{% endblock %}

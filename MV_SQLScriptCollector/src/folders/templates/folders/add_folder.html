@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="row pt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <main class="w-100 m-auto">
+                    <form role="form" method="post" action="">
+                        {{ form.csrf_token }}
+                        <h1 class="h3 mb-3 fw-normal text-center">Добавление папки нового отдела</h1>
+                        <div class="form-floating">
+                            {{ form.folder_name(placeholder="folder_name", class="form-control mb-2") }}
+                            {{ form.folder_name.label }}
+                            {% if form.folder_name.errors %}
+                                {% for error in form.folder_name.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                            <div class="form-floating form-control mb-2">
+                            <div>{{ form.private.label }}</div>
+                            <div>{{ form.private(placeholder="private", class="ms-0 ps-0", style="list-style:none") }}</div>
+                            {% if form.private.errors %}
+                                {% for error in form.private.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Добавить папку отдела</button>
+{#                        <p class="text-center mt-3">Уже зарегистрировались?#}
+{#                            <a href="{{ url_for('users.login') }}">Войдите в систему</a>#}
+{#                        </p>#}
+                    </form>
+                </main>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+{% endblock %}

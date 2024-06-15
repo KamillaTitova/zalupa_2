@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'BloggerSans';
+  src: url('../../static/fonts/blogger-sans-font/BloggerSans-mmn9.ttf') format("truetype");
+}
+* {
+    text-rendering: optimizeLegibility;
+    background-color: #e3e8ef:
+}
+html {
+    font-size: 16px;
+}
+body {
+    font-family: 'BloggerSans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    min-width: 320px;
+    background-color: #e3e8ef:
+}
+
+.greeting {
+    font-weight: 500;
+}
+.greeting:hover {
+    font-weight: 600;
+    background-color: #e6e6e6;
+}
+
+.error {
+  color: red;
+  margin-bottom: 5px;
+  text-align: center;
+}

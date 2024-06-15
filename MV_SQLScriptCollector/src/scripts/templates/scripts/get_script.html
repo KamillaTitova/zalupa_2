@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="row pt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <main class="w-100 m-auto">
+                        <h1 class="h3 mb-3 fw-normal text-center">Просмотр SQL скрипта</h1>
+                        <div class="form-floating">
+                            <span class="form-control mb-2" id="floatingLabelName">{{ script.name }}</span>
+                            <label for="floatingInput">Название скрипта</label>
+                        </div>
+                        <div class="form-floating">
+                            <span class="form-control mb-2" id="floatingLabelName">{{ script.description}}</span>
+                            <label for="floatingInput">Описание скрипта</label>
+                        </div>
+                        <div class="form-floating">
+                            <span class="form-control mb-2" id="floatingLabelName">{{ script.user_id}}</span>
+                            <label for="floatingInput">Автор скрипта</label>
+                        </div>
+                        <div class="form-floating">
+                            <span class="form-control mb-2" id="floatingLabelName" style="height: 400px">{{ script.code}}</span>
+                            <label for="floatingInput">Код скрипта</label>
+                        </div>
+                        <p class="w-100 btn btn-lg btn-primary">
+                            <a class="text-white link-underline" href="{{ url_for('scripts.scripts_list') }}">Список скриптов</a>
+                        </p>
+                </main>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+{% endblock %}

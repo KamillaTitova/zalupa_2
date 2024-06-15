@@ -1,0 +1,239 @@
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background-color: rgb(227, 232, 239):
+}
+
+html {
+  height: -webkit-fill-available;
+  background-color: rgb(227, 232, 239):
+}
+
+.sidebar{
+    background-color: rgb(248, 249, 250);
+    width: 20%;
+    min-width: 200px;
+    max-width: 450px;
+    overflow: auto;
+    resize: horizontal;
+}
+
+main {
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: rgb(227, 232, 239):
+}
+
+.d-flex-nowre
+.dropdown-toggle { outline: 0; }
+
+.btn-toggle {
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: var(--bs-emphasis-color);
+  background-color: transparent;
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+[data-bs-theme="dark"] .btn-toggle::before {
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28255,255,255,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+}
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+}
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: var(--bs-tertiary-bg);
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.flex-nowrap {
+    height: 100%;
+}
+
+/*главная зона справа от sidebar*/
+.main-page{
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    width: 100%;
+    height: 98%;
+    background-color: rgb(248, 249, 250);
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+}
+
+.script-area{
+    height: 100%;
+}
+
+.script-info{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    height: 350px;
+    border-top: 1px solid grey;
+}
+
+.script-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid grey;
+    margin: 10px;
+    padding: 5px;
+}
+
+.script-text{
+    margin: 10px;
+    padding: 10px;
+}
+
+.script-button{
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.script-button:hover{
+    background: #bcbdbe;
+    transition: 0.3s;
+}
+
+.main-info{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.plus-info{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.info-title{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    padding: 5px 5px 2px 5px;
+    border-bottom: 1px solid black;
+}
+
+.info-list{
+    margin: 10px
+}
+
+.info-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.used-objects{
+    border: 5px;
+    overflow: hidden;
+}
+
+.script-link{
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.greeting{
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.greeting:hover{
+    background-color: rgb(248, 249, 250);
+    transition: 0.3s;
+}
+
+.input-zone{
+    background-color: #3e82da;
+}
+
+.sidebar-input{
+    width: 90%;
+    border: 1px solid rgb(248, 249, 250);
+    margin: 10px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #3e82da;
+    color: white;
+
+}
+
+input.sidebar-input::placeholder{
+    color: white;
+}
+
+button.btn-toggle{
+    width: 100%;
+    border-left: 5px solid transparent;
+    border-radius: 0;
+    transition: 0.3s;
+}
+
+button.btn-toggle:hover{
+    border-left: 5px solid #3e82da;
+}
+
+ul.scripts{
+    padding-left: 0;
+}
+
+li.script-name{
+    border-left: 5px solid transparent;
+    list-style-type: none;
+    padding: 10px 4px 4px 40px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+li.script-name:hover{
+    border-left: 5px solid #3e82da;
+}
+
+button.user-button{
+    padding-left: 20px;
+}
+
+a.data-office{
+    padding: 10px 0 0 25px;
+    background-color: #3e82da;
+}
